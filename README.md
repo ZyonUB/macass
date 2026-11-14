@@ -8,4 +8,4 @@ A high-performance Roblox executor for macOS.
 Run this command in your terminal:
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/macos-macass/macos/main/install.sh | bash
+curl -fsSL https://github.com/ZyonUB/macass/blob/main/install.sh | bash
