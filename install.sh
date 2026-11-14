@@ -8,13 +8,14 @@ TEMP_DIR=$(mktemp -d)
 
 echo "[*] Installing $EXECUTOR_NAME..."
 
-# Find the latest release asset URL for Macass
-# Replace 'macos-macass/macos' with your actual repo owner/repo name
+# FIXED: Pointed to the correct owner/repo
 REPO_OWNER="ZyonUB"
 REPO_NAME="macass"
 ASSET_NAME="Macass.app.zip"
 
-LATEST_URL=$(curl -s "https://api.github.com/repos/$REPO_OWNER/$REPO_NAME/releases/latest" | grep -oP '"browser_download_url": "\K[^"]+.*$ASSET_NAME')
+# FIXED: Use sed instead of grep -P for macOS compatibility
+LATEST_URL=$(curl -s "https://api.github.com/repos/$REPO_OWNER/$REPO_NAME/releases/latest" | \
+    sed -n 's/.*"browser_download_url": "\([^"]*\).*\b'"$ASSET_NAME"'.*/\1/p' | head -n 1)
 
 if [ -z "$LATEST_URL" ]; then
     echo "[-] Could not find download URL for $ASSET_NAME in latest release."
