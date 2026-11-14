@@ -10,8 +10,8 @@ echo "[*] Installing $EXECUTOR_NAME..."
 
 # Find the latest release asset URL for Macass
 # Replace 'macos-macass/macos' with your actual repo owner/repo name
-REPO_OWNER="macos-macass"
-REPO_NAME="macos"
+REPO_OWNER="ZyonUB"
+REPO_NAME="macass"
 ASSET_NAME="Macass.app.zip"
 
 LATEST_URL=$(curl -s "https://api.github.com/repos/$REPO_OWNER/$REPO_NAME/releases/latest" | grep -oP '"browser_download_url": "\K[^"]+.*$ASSET_NAME')
